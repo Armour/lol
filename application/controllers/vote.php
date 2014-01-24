@@ -27,7 +27,6 @@
 		{
 			$this->load->view('vote/essay');
 		}
-
-		//public function 
+		
 	}
 ?>
