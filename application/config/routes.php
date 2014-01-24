@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "vote";
+$route['default_controller'] = "lvote";
 $route['404_override'] = '';
 
 
