@@ -3,7 +3,7 @@
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
 | -------------------------------------------------------------------
-| This file will contain the settings needed to access your database.
+| This file will contain the settings needed to access your database.sample.
 |
 | For complete instructions please consult the 'Database Connection'
 | page of the User Guide.
@@ -12,29 +12,29 @@
 | EXPLANATION OF VARIABLES
 | -------------------------------------------------------------------
 |
-|	['hostname'] The hostname of your database server.
-|	['username'] The username used to connect to the database
-|	['password'] The password used to connect to the database
-|	['database'] The name of the database you want to connect to
-|	['dbdriver'] The database type. ie: mysql.  Currently supported:
+|	['hostname'] The hostname of your database.sample server.
+|	['username'] The username used to connect to the database.sample
+|	['password'] The password used to connect to the database.sample
+|	['database.sample'] The name of the database.sample you want to connect to
+|	['dbdriver'] The database.sample type. ie: mysql.  Currently supported:
 				 mysql, mysqli, postgre, odbc, mssql, sqlite, oci8
 |	['dbprefix'] You can add an optional prefix, which will be added
 |				 to the table name when using the  Active Record class
 |	['pconnect'] TRUE/FALSE - Whether to use a persistent connection
-|	['db_debug'] TRUE/FALSE - Whether database errors should be displayed.
+|	['db_debug'] TRUE/FALSE - Whether database.sample errors should be displayed.
 |	['cache_on'] TRUE/FALSE - Enables/disables query caching
 |	['cachedir'] The path to the folder where cache files should be stored
-|	['char_set'] The character set used in communicating with the database
-|	['dbcollat'] The character collation used in communicating with the database
+|	['char_set'] The character set used in communicating with the database.sample
+|	['dbcollat'] The character collation used in communicating with the database.sample
 |				 NOTE: For MySQL and MySQLi databases, this setting is only used
 | 				 as a backup if your server is running PHP < 5.2.3 or MySQL < 5.0.7
 |				 (and in table creation queries made with DB Forge).
 | 				 There is an incompatibility in PHP with mysql_real_escape_string() which
 | 				 can make your site vulnerable to SQL injection if you are using a
 | 				 multi-byte character set and are running versions lower than these.
-| 				 Sites using Latin-1 or UTF-8 database character set and collation are unaffected.
+| 				 Sites using Latin-1 or UTF-8 database.sample character set and collation are unaffected.
 |	['swap_pre'] A default table prefix that should be swapped with the dbprefix
-|	['autoinit'] Whether or not to automatically initialize the database.
+|	['autoinit'] Whether or not to automatically initialize the database.sample.
 |	['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
 |							- good for ensuring strict SQL while developing
 |
@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'lol_vote';
-$db['default']['password'] = 'lolvote';
-$db['default']['database'] = 'lol_vote';
+$db['default']['username'] ='';
+$db['default']['password'] = '';
+$db['default']['database'] ='';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -65,5 +65,5 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 
-/* End of file database.php */
-/* Location: ./application/config/database.php */
+/* End of file database.sample.php */
+/* Location: ./application/config/database.sample.php */
