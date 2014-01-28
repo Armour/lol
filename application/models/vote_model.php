@@ -6,33 +6,62 @@
 			parent::__construct();
 		}
 		
-		function add_new_essay()
+	    function skin_add_new_skin()
 		{
 			$data = array
 			(
-				'title' => $this->input->post('title',TRUE),
-				'essay' => $this->input->post('essay',TRUE),
+				'skin_name'=>$this->input->post('skin_name',TRUE),
+				'skin_designer'=>$this->input->post('skin_designer',TRUE),
+				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
 			);
-			$this->db->insert('lol_essay',$data);
+			$this->db->insert('lol_skin',$data);
 		}
 		
-		function add_new_user()
+	    function skin_vote_this_one($id = 0)
 		{
-			$data = array
-			(
-					'name'     =>$this->input->post('name',TRUE),
-					'psw'      =>$this->input->post('psw',TRUE),
-					'email'    =>$this->input->post('email',TRUE),
-			);
-			$this->db->insert('lol_user',$data);
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('skin_id'=>$id);
+				$query = $this->db->get_where('lol_skin',$array);	
+				if ($query->num_row()>0)
+				{
+					$row = $query->row_array();
+					$data = array
+					(
+							'skin_vote_number'=>$row['skin_vote_number']+1,
+					);
+					$this->db->where('skin_id',$id);
+					$this->db->update('lol_skin',$data);
+				}	else
+				{		
+				}
+			} 
 		}
 		
-		function get_essay($slug)
+		function skin_show_this_one($id = 0)
 		{
-			$array = array('id'=>$slug);
-			$query = $this->db->get_where('lol_essay',$array);
-			return $query->row_array();
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('skin_id'=>$id);
+				$query = $this->db->get_where('lol_skin',$array);
+				if ($query->num_row()>0)
+				{
+					$data = $query->row_array();
+					return $data;
+				}	else
+				{
+				}
+			}
 		}
+		
+		function skin_get_id($name = '',$designer='')
+		{	
+			$array = array('skin_name'=>$name,'skin_designer'=>$designer);
+			$query = $this->db->get_where('lol_skin',$array);
+			$row = $query->row_array();
+			return $row['skin_id'];
+		}
+		
 		
 		function get_essay_title()
 		{
