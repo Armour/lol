@@ -8,11 +8,15 @@
 			$this->load->model('vote_model');
 			$this->load->helper('url');
 			$this->load->helper('form');
+			$this->load->library('parser');
 		}
 
 		public function index()
 		{	
-			$this->load->view('templates/header');
+			$data = array(
+				'title' => 'Home'
+				);
+			$this->parser->parse('templates/header', $data);
 			$this->load->view('lol/index');
 			$this->load->view('templates/footer');
 		}
