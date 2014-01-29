@@ -117,5 +117,29 @@
 			$row = $query->row_array();
 			return $row['voice_id'];
 		}
+		
+		function skin_get_first_skin()
+		{		
+		}
+		
+		function skin_get_second_skin()
+		{		
+		}
+		
+		function skin_get_third_skin()
+		{		
+		}
+		
+		function voice_get_first_voice()
+		{
+		}
+		
+		function voice_get_second_voice()
+		{
+		}
+		
+		function voice_get_third_voice()
+		{
+		}
 	}
 ?>

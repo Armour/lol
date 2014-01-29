@@ -30,15 +30,21 @@
 		}
 		
 		public function vote_voice()
-		{
-			$this->load->view('templates/header');
+		{  
+			$data = array(
+                 'title' => ''
+            );
+            $this->parser->parse('templates/header', $data);
 			$this->load->view('lol/voice');
 			$this->load->view('templates/footer');
 		}
 
 		public function vote_skin()
 		{
-			$this->load->view('templates/header');
+			$data = array(
+                 'title' => ''
+            );
+            $this->parser->parse('templates/header', $data);
 			$this->load->view('lol/skin');
 			$this->load->view('templates/footer');
 		}
