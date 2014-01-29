@@ -1,9 +1,9 @@
 <div class="main" id="main-index">
 	<div id="frame-skin">
-		{skin_first}	
+		{skin1}	
 		<div class="skin-box" id="boxl">
 			<div class="box-border"></div>
-			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote}">
+			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote_number}">
 			<p class="skin-name">{skin_name}</p>
 			<p class="skin-author">作者：{skin_designer}</p>
 			<p class="skin-rank">（{skin_rank}）</p>
@@ -12,11 +12,11 @@
 				<button name="vote" class="btn-vote">支持一下</button>
 			</form>
 		</div>
-		{/skin_first}
-		{skin_second}	
+		{/skin1}
+		{skin2}	
 		<div class="skin-box" id="boxl">
 			<div class="box-border"></div>
-			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote}">
+			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote_number}">
 			<p class="skin-name">{skin_name}</p>
 			<p class="skin-author">作者：{skin_designer}</p>
 			<p class="skin-rank">（{skin_rank}）</p>
@@ -25,11 +25,11 @@
 				<button name="vote" class="btn-vote">支持一下</button>
 			</form>
 		</div>
-		{/skin_second}
-		{skin_third}	
+		{/skin2}
+		{skin3}	
 		<div class="skin-box" id="boxl">
 			<div class="box-border"></div>
-			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote}">
+			<img class="skin-cover" src="{skin_cover}" alt="{skin_name}/{skin_designer}/{skin_vote_number}">
 			<p class="skin-name">{skin_name}</p>
 			<p class="skin-author">作者：{skin_designer}</p>
 			<p class="skin-rank">（{skin_rank}）</p>
@@ -38,7 +38,7 @@
 				<button name="vote" class="btn-vote">支持一下</button>
 			</form>
 		</div>
-		{/skin_third}
+		{/skin3}
 	</div>
 	<div id="frame-voice">
 		

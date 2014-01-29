@@ -6,71 +6,116 @@
 			parent::__construct();
 		}
 		
-		function add_new_essay()
+	    function skin_add_new_skin()
 		{
 			$data = array
 			(
-				'title' => $this->input->post('title',TRUE),
-				'essay' => $this->input->post('essay',TRUE),
+				'skin_name'=>$this->input->post('skin_name',TRUE),
+				'skin_designer'=>$this->input->post('skin_designer',TRUE),
+				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
 			);
-			$this->db->insert('lol_essay',$data);
+			$this->db->insert('lol_skin',$data);
 		}
-		
-		function add_new_user()
+	
+		function voice_add_new_voice()
 		{
 			$data = array
 			(
-					'name'     =>$this->input->post('name',TRUE),
-					'psw'      =>$this->input->post('psw',TRUE),
-					'email'    =>$this->input->post('email',TRUE),
+					'voice_name'=>$this->input->post('voice_name',TRUE),
+					'voice_designer'=>$this->input->post('voice_designer',TRUE),
+					'voice_vote_number'=>$this->input->post('voice_vote_number',TRUE),
 			);
-			$this->db->insert('lol_user',$data);
+			$this->db->insert('lol_voice',$data);
 		}
 		
-		function get_essay($slug)
+	    function skin_vote_this_one($id = 0)
 		{
-			$array = array('id'=>$slug);
-			$query = $this->db->get_where('lol_essay',$array);
-			return $query->row_array();
-		}
-		
-		function get_essay_title()
-		{
-			$query= $this->db->get('lol_essay');
-			if (( $query->num_rows() > 0))
-			{
-				$temp = 1;
-				foreach (($query->result_array()) as $row):
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('skin_id'=>$id);
+				$query = $this->db->get_where('lol_skin',$array);	
+				if ($query->num_row()>0)
 				{
-					$data['results'][$temp]['title'] = $row['title'];
-					$data['results'][$temp]['id'] = $row['id'];
-					$temp++;
+					$row = $query->row_array();
+					$data = array
+					(
+							'skin_vote_number'=>$row['skin_vote_number']+1,
+					);
+					$this->db->where('skin_id',$id);
+					$this->db->update('lol_skin',$data);
+				}	else
+				{		
 				}
-				endforeach;
-				$data['num'] = $temp - 1;
+			} 
+		}
+		
+		function voice_vote_this_one($id = 0)
+		{
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('voice_id'=>$id);
+				$query = $this->db->get_where('lol_voice',$array);
+				if ($query->num_row()>0)
+				{
+					$row = $query->row_array();
+					$data = array
+					(
+							'voice_vote_number'=>$row['voice_vote_number']+1,
+					);
+					$this->db->where('voice_id',$id);
+					$this->db->update('lol_voice',$data);
+				}	else
+				{
+				}
 			}
-			return  $data;
 		}
 		
-		function find_user()
+		function skin_show_this_one($id = 0)
 		{
-			$array = array('name'=>$this->input->post('name',TRUE));
-			$query = $this->db->get_where('lol_user',$array);
-			if ($query->num_rows() > 0)
-			{
-				return 1;
-			} else
-				return 0;
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('skin_id'=>$id);
+				$query = $this->db->get_where('lol_skin',$array);
+				if ($query->num_row()>0)
+				{
+					$data = $query->row_array();
+					return $data;
+				}	else
+				{
+				}
+			}
 		}
 		
-		function check_user()
+		function voice_show_this_one($id = 0)
 		{
-			$query = $this->db->get_where('lol_user',array('name'=>$this->input->post('name',TRUE),'psw'=>$this->input->post('psw',TRUE)));
-			if ($query->num_rows() > 0)
-			{
-				return 1;
-			} else
-				return 0;
+			if (!is_numeric($id)) $id = 0;
+			if (id!=0) {
+				$array = array('voice_id'=>$id);
+				$query = $this->db->get_where('lol_voice',$array);
+				if ($query->num_row()>0)
+				{
+					$data = $query->row_array();
+					return $data;
+				}	else
+				{
+				}
+			}
+		}
+		
+		function skin_get_id($name = '',$designer='')
+		{	
+			$array = array('skin_name'=>$name,'skin_designer'=>$designer);
+			$query = $this->db->get_where('lol_skin',$array);
+			$row = $query->row_array();
+			return $row['skin_id'];
+		}
+		
+		function voice_get_id($name = '',$designer='')
+		{
+			$array = array('voice_name'=>$name,'voice_designer'=>$designer);
+			$query = $this->db->get_where('lol_voice',$array);
+			$row = $query->row_array();
+			return $row['voice_id'];
 		}
 	}
 ?>
