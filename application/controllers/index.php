@@ -29,23 +29,29 @@
 			$this->load->view('templates/footer');
 		}
 		
-		public function vote_voice()
-		{  
-			$data = array(
-                 'title' => ''
-            );
-            $this->parser->parse('templates/header', $data);
-			$this->load->view('lol/voice');
-			$this->load->view('templates/footer');
-		}
-
 		public function vote_skin()
 		{
 			$data = array(
                  'title' => ''
             );
+			$num = $this->vote_model->skin_get_number();
+			for ($i=1; $i<=$num; $i++)
+				$this->data[$i] = $this->vote_model->skin_get_that_skin($i);
             $this->parser->parse('templates/header', $data);
-			$this->load->view('lol/skin');
+            $this->parser->parse('lol/skin',$this->data);
+			$this->load->view('templates/footer');
+		}
+
+		public function vote_voice()
+		{
+			$data = array(
+					'title' => ''
+			);
+			$num = $this->vote_model->voice_get_number();
+			for ($i=1; $i<=$num; $i++)
+				$this->data[$i] = $this->vote_model->voice_get_that_voice($i);
+			$this->parser->parse('templates/header', $data);
+			$this->parser->parse('lol/voice',$this->data);
 			$this->load->view('templates/footer');
 		}
 	}

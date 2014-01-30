@@ -13,6 +13,7 @@
 				'skin_name'=>$this->input->post('skin_name',TRUE),
 				'skin_designer'=>$this->input->post('skin_designer',TRUE),
 				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
+				'skin_file_location'=>''
 			);
 			$this->db->insert('lol_skin',$data);
 		}
@@ -24,6 +25,7 @@
 					'voice_name'=>$this->input->post('voice_name',TRUE),
 					'voice_designer'=>$this->input->post('voice_designer',TRUE),
 					'voice_vote_number'=>$this->input->post('voice_vote_number',TRUE),
+					'voice_file_location'=>''
 			);
 			$this->db->insert('lol_voice',$data);
 		}
@@ -68,6 +70,18 @@
 				{
 				}
 			}
+		}
+		
+		function skin_get_number()
+		{
+			$query = $this->db->get('lol_skin');
+			return $query->num_rows();
+		}
+		
+		function voice_get_number()
+		{
+			$query = $this->db->get('lol_voice');
+			return $query->num_rows();
 		}
 		
 		function skin_show_this_one($id = 0)
@@ -120,26 +134,70 @@
 		
 		function skin_get_first_skin()
 		{		
+			$this->db->select('skin_name','skin_designer','skin_vote_number','skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(1);
+			return $row;
 		}
 		
 		function skin_get_second_skin()
 		{		
+			$this->db->select('skin_name','skin_designer','skin_vote_number','skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(2);
+			return $row;
 		}
 		
 		function skin_get_third_skin()
 		{		
+			$this->db->select('skin_name','skin_designer','skin_vote_number','skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(3);
+			return $row;
 		}
 		
 		function voice_get_first_voice()
 		{
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(1);
+			return $row;
 		}
 		
 		function voice_get_second_voice()
 		{
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(2);
+			return $row;
 		}
 		
 		function voice_get_third_voice()
 		{
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$query = $this->db->get();
+			$row = $query->row_array(3);
+			return $row;
+		}
+
+		function skin_get_that_skin($num = 0)
+		{
+			if ($num != 0)
+			{
+				$query = $this->db->get('lol_skin');
+				$row = $query->row_array($num);
+				return  $row;	
+			}
+		}
+		
+		function voice_get_that_voice($num = 0)
+		{
+			if ($num != 0)
+			{
+				$query = $this->db->get('lol_voice');
+				$row = $query->row_array($num);
+				return  $row;
+			}
 		}
 	}
 ?>
