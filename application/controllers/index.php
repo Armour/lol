@@ -45,5 +45,31 @@
 			$this->vote_model->voice_vote_this_one($id);
             $this->index();
 		}
+		
+		public function vote_skin_show_all()
+		{
+			$this->title = array(
+					'title' => ''
+			 );
+			$num = $this->vote_model->skin_get_number();
+			for ($i=1; $i<=$num; $i++)
+		    	$this->data[$i] = $this->vote_model->skin_get_that_skin($i);
+			$this->parser->parse('templates/header', $this->title);
+			$this->parser->parse('lol/skin',$this->data);
+			$this->load->view('templates/footer');
+		}
+		
+		public function vote_voice_show_all()
+		{
+			$this->title  = array(
+					'title' => ''
+			);
+			$num = $this->vote_model->voice_get_number();
+			for ($i=1; $i<=$num; $i++)
+				$this->data[$i] = $this->vote_model->voice_get_that_voice($i);
+			$this->parser->parse('templates/header', $this->title);
+			$this->parser->parse('lol/voice',$this->data);
+			$this->load->view('templates/footer');
+		}
 	}
 ?>
