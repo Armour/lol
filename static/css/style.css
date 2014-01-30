@@ -31,12 +31,13 @@ body {
 	position: relative;
 	top: 0;
 	left: 0;
-	width: 624px;
+	width: 594px;
 	height: 359px;
 	background: #000 url("../img/skinbg.png") no-repeat left top;
 	border: 1px solid #222;
 	border-radius: 16px;
 	padding-top: 92px;
+	padding-left: 30px;
 }
 
 #voice-frame {
@@ -49,35 +50,31 @@ body {
 	border: 1px solid #222;
 	border-radius: 16px;
 	padding-top: 92px;
-
 }
 
 .skin-box {
-	position: relative;
+	float: left;
 	width: 188px;
 	height: 300px;
-	margin-left: 30px;
+	margin-left: 0px;
 	text-align: center;
 }
 
-#boxl {
-	top: 0;
+/*#boxl {
 	left: 0px;
 }
 
 #boxm {
-	top: -300px;
 	left: 188px;
 }
 
 #boxr {
-	top: -600px;
 	left: 376px;
 }
-
+*/
 .voice-box {
 	position: relative;
-	width: 350px;
+	width: 370px;
 	height: 80px;
 	margin-left: 40px;
 	margin-bottom: 22px;
@@ -99,8 +96,8 @@ body {
 }
 
 .skin-border {
-	position: absolute;
-	top: -2px;
+	position: relative;
+	top: -130px;
 	left: -2px;
 	width: 132px;
 	height: 132px;
@@ -121,10 +118,16 @@ body {
 	background-size: 100% auto;
 }
 
+.votes {
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+}
+
 .skin-name {
 	font-size: 14px;
 	font-weight: bold;
-	margin: 40px 0 12px 0;
+	margin: -100px 0 12px 0;
 }
 
 .voice-name {
