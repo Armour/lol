@@ -167,8 +167,10 @@ class CI_Parser {
 		foreach ($data as $row)
 		{
 			$temp = $match['1'];
-			if (is_array($row))
+			
+			if (is_array($row))   
 			{
+				
 				foreach ($row as $key => $val)
 				{
 					if ( ! is_array($val))
@@ -180,8 +182,9 @@ class CI_Parser {
 						$temp = $this->_parse_pair($key, $val, $temp);
 					}
 				}
+				
 			}
-
+			
 			$str .= $temp;
 		}
 

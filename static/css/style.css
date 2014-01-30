@@ -118,6 +118,12 @@ body {
 	background-size: 100% auto;
 }
 
+.votes {
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+}
+
 .skin-name {
 	font-size: 14px;
 	font-weight: bold;
