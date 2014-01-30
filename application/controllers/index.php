@@ -24,6 +24,7 @@
             $data = array(
                  'title' => 'Home'
             );
+            //var_dump($this->data);
             $this->parser->parse('templates/header', $data);
 			$this->parser->parse('lol/index',$this->data);
 			$this->load->view('templates/footer');

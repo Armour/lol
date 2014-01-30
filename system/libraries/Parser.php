@@ -167,18 +167,24 @@ class CI_Parser {
 		foreach ($data as $row)
 		{
 			$temp = $match['1'];
-			foreach ($row as $key => $val)
+			
+			if (is_array($row))   
 			{
-				if ( ! is_array($val))
+				
+				foreach ($row as $key => $val)
 				{
-					$temp = $this->_parse_single($key, $val, $temp);
+					if ( ! is_array($val))
+					{
+						$temp = $this->_parse_single($key, $val, $temp);
+					}
+					else
+					{
+						$temp = $this->_parse_pair($key, $val, $temp);
+					}
 				}
-				else
-				{
-					$temp = $this->_parse_pair($key, $val, $temp);
-				}
+				
 			}
-
+			
 			$str .= $temp;
 		}
 
