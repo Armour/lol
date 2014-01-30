@@ -13,7 +13,7 @@
 				'skin_name'=>$this->input->post('skin_name',TRUE),
 				'skin_designer'=>$this->input->post('skin_designer',TRUE),
 				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
-				'skin_file_location'=>''
+				'skin_file_location'=>"/static/$this->input->post('skin_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_skin',$data);
 		}
@@ -25,7 +25,7 @@
 					'voice_name'=>$this->input->post('voice_name',TRUE),
 					'voice_designer'=>$this->input->post('voice_designer',TRUE),
 					'voice_vote_number'=>$this->input->post('voice_vote_number',TRUE),
-					'voice_file_location'=>''
+					'voice_file_location'=>"/static/$this->input->post('skin_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_voice',$data);
 		}

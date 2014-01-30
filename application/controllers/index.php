@@ -37,13 +37,17 @@
 		public function vote_skin($id)
 		{
 			$this->vote_model->skin_vote_this_one($id);
-            $this->index();
+			$this->load->view('templates/header');
+            $this->load->view('lol/vote_skin_success');
+			$this->load->view('templates/footer');
 		}
 
 		public function vote_voice($id)
 		{
-			$this->vote_model->voice_vote_this_one($id);
-            $this->index();
+			$this->vote_model->voice_vote_this_one($id);	
+			$this->load->view('templates/header');
+            $this->load->view('lol/vote_voice_success');
+			$this->load->view('templates/footer');
 		}
 		
 		public function vote_skin_show_all()
