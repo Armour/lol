@@ -11,3 +11,4 @@
 	</head>
 	<body>
 		<div id="header"></div>
+		<div class="main" id="main-index">
