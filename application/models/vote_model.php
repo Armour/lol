@@ -158,7 +158,7 @@
 		
 		function voice_get_first_voice()
 		{
-			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
 			$query = $this->db->get();
 			$row = $query->row_array(1);
 			return $row;
@@ -166,7 +166,7 @@
 		
 		function voice_get_second_voice()
 		{
-			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
 			$query = $this->db->get();
 			$row = $query->row_array(2);
 			return $row;
@@ -174,7 +174,7 @@
 		
 		function voice_get_third_voice()
 		{
-			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('voice_skin')->order_by('voice_vote_number','desc')->limit(3);
+			$this->db->select('voice_name','voice_designer','voice_vote_number','voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
 			$query = $this->db->get();
 			$row = $query->row_array(3);
 			return $row;
