@@ -3,23 +3,23 @@
 body {
 	margin: 0;
 	background-color: #000;
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 	color: #fff;
-	font-family: "Hiragino Sans GB", "冬青黑体", "MS Yahei", 微软雅黑, sans-serif;
+	font-family: "Hiragino Sans GB W3", "冬青黑体", "MS Yahei", "微软雅黑", sans-serif;
 }
 
 #header {
 	position: relative;
 	top: 0;
-	width: 1300px;
+	width: 100%;
 	height: 312px;
 	margin: 0 auto;
 	padding: 0;
 	background: #000 url("../img/header.png") no-repeat center top;
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 
-.main {
+#main-index {
 	position: relative;
 	top: 0;
 	width: 1109px;
@@ -27,23 +27,29 @@ body {
 
 }
 
-#footer {
-	width: 120px;
+#skin-frame {
 	position: relative;
-	bottom: 0;
-	left: 50%;
-	margin: 20px 0 0 -60px;
-	color: #555;
-	font-size: 12px;
-	text-align: center;
-}
-
-#frame-skin {
-	position: relative;
+	top: 0;
+	left: 0;
 	width: 624px;
 	height: 359px;
 	background: #000 url("../img/skinbg.png") no-repeat left top;
-	padding-top: 93px;
+	border: 1px solid #222;
+	border-radius: 16px;
+	padding-top: 92px;
+}
+
+#voice-frame {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 453px;
+	height: 359px;
+	background: #000 url("../img/voicebg.png") no-repeat left top;
+	border: 1px solid #222;
+	border-radius: 16px;
+	padding-top: 92px;
+
 }
 
 .skin-box {
@@ -69,6 +75,22 @@ body {
 	left: 376px;
 }
 
+.voice-box {
+	position: relative;
+	width: 350px;
+	height: 80px;
+	margin-left: 40px;
+	margin-bottom: 22px;
+}
+
+.voice-cover {
+	width: 78px;
+	height: 78px;
+	border: none;
+	float: left;
+	margin: 0;
+}
+
 .skin-cover {
 	width: 128px;
 	height: 128px;
@@ -76,7 +98,7 @@ body {
 	margin: 0 auto;
 }
 
-.cover-border {
+.skin-border {
 	position: absolute;
 	top: -2px;
 	left: -2px;
@@ -85,6 +107,18 @@ body {
 	margin-left: 30px;
 	border: none;
 	background: url("../img/skinbox.png") no-repeat left top;
+	background-size: 100% auto;
+}
+
+.voice-border {
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	width: 80px;
+	height: 80px;
+	border: none;
+	background: url("../img/skinbox.png") no-repeat left top;
+	background-size: 100% auto;
 }
 
 .skin-name {
@@ -93,11 +127,24 @@ body {
 	margin: 40px 0 12px 0;
 }
 
+.voice-name {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 100px;	
+}
+
 .skin-author, .skin-votes, .skin-rank {
 	color: #ccc;
 	font-size: 12px;
 	line-height: 16px;
 	margin: 0px;
+}
+
+.voice-author, .voice-votes, .voice-rank {
+	color: #ccc;
+	font-size: 12px;
+	line-height: 16px;
+	margin: 0 0 0 100px;
 }
 
 button:hover {
@@ -109,7 +156,7 @@ button {
 	height: 30px;
 	width: 80px;
 	padding: 0;
-	background: #000 url("../img/btnvote.png");
+	background: #000 url("../img/btnvote.png") no-repeat left top;
 	outline: none;
 	border: 1px solid #222;
 	border-radius: 6px;
@@ -122,9 +169,27 @@ button:active {
 }
 
 button:disabled {
-	box-shadow: inset 0 0 20px rgba(0,0,0,1);
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
 
-.btn-vote {
+.btn-skin {
 	margin: 15px auto;
+}
+
+.btn-voice {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 26px 0 0 0;
+}
+
+#footer {
+	width: 120px;
+	position: relative;
+	bottom: 0;
+	left: 50%;
+	margin: 20px 0 0 -60px;
+	color: #555;
+	font-size: 12px;
+	text-align: center;
 }
