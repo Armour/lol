@@ -202,7 +202,7 @@
 		{
 			if ($num != 0)
 			{
-				$query = $this->db->get('lol_skin');
+				$query = $this->db->get('lol_skin');	
 				$row = $query->row_array($num);
 				return  $row;	
 			}

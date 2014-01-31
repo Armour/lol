@@ -55,11 +55,12 @@
 		public function vote_skin_show_all()
 		{
 			$this->title = array(
-					'title' => ''
+					'title' => 'Skin'
 			 );
 			$num = $this->vote_model->skin_get_number();
-			for ($i=1; $i<=$num; $i++)
-		    	$this->data[$i] = $this->vote_model->skin_get_that_skin($i);
+			for ($i=0; $i<$num; $i++)
+		    	$this->data['skin'][$i] = $this->vote_model->skin_get_that_skin($i+1);
+			//var_dump($this->data);
 			$this->parser->parse('templates/header', $this->title);
 			$this->parser->parse('lol/skin',$this->data);
 			$this->load->view('templates/footer');
@@ -68,11 +69,11 @@
 		public function vote_voice_show_all()
 		{
 			$this->title  = array(
-					'title' => ''
+					'title' => 'Voice'
 			);
 			$num = $this->vote_model->voice_get_number();
-			for ($i=1; $i<=$num; $i++)
-				$this->data[$i] = $this->vote_model->voice_get_that_voice($i);
+			for ($i=0; $i<$num; $i++)
+				$this->data['voice'][$i] = $this->vote_model->voice_get_that_voice($i+1);
 			$this->parser->parse('templates/header', $this->title);
 			$this->parser->parse('lol/voice',$this->data);
 			$this->load->view('templates/footer');
