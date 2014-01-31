@@ -2,7 +2,7 @@
 			<div id="skin-frame">
 				{skin}
 				<div class="skin-box">
-					<img class="skin-cover" src="{skin_file_location}" alt="{skin_name}/{skin_designer}/{skin_vote_number}">
+					<img class="skin-cover" src="<?php echo base_url("static/skin_cover") ?>/{skin_file_location}" alt="{skin_name}/{skin_designer}/{skin_vote_number}">
 					<div class="skin-border"></div>
 					<p class="skin-name">{skin_name}</p>
 					<p class="skin-author">作者：{skin_designer}</p>
@@ -17,7 +17,7 @@
 			<div id="voice-frame">
 				{voice}
 				<div class="voice-box">
-					<img class="voice-cover" src="{voice_file_location}" alt="{voice_name}/{voice_designer}/{voice_vote_number}">
+					<img class="voice-cover" src="<?php echo base_url("static/voice_cover") ?>/{voice_file_location}" alt="{voice_name}/{voice_designer}/{voice_vote_number}">
 					<div class="voice-border"></div>
 					<p class="voice-name">{voice_name}</p>
 					<p class="voice-author">作者：{voice_designer}</p>
