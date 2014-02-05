@@ -9,6 +9,39 @@
 		<title>{title}</title>
 
 		<link rel="stylesheet" href="static/css/style.css">
+		<script>
+		var zycript = {
+			xlat: "abcdwxyzstuvrqponmijklefghABCDWXYZSTUVMNOPQRIJKLEFGH9876543210+/",
+			decode: function(a) {
+				for (var a = a.replace(/[^A-Za-z0-9\+\/]/g, ""), b = "", c = 0; c < a.length;) {
+					var d = this.xlat.indexOf(a.charAt(c++)),
+						e = this.xlat.indexOf(a.charAt(c++)),
+						f = this.xlat.indexOf(a.charAt(c++)),
+						g = this.xlat.indexOf(a.charAt(c++)),
+						h = (e & 15) << 4 | f >> 2,
+						i = (f & 3) << 6 | g,
+						b = b + String.fromCharCode(d << 2 | e >> 4);
+					64 != f && 0 < h && (b += String.fromCharCode(h));
+					64 != g && 0 < i && (b += String.fromCharCode(i))
+				}
+				return this._utf8_decode(b)
+			},
+			_utf8_decode: function(a) {
+				for (var b = "", c = 0; c < a.length;) {
+					var d = a.charCodeAt(c);
+					if (128 > d) b += String.fromCharCode(d),
+					c++;
+					else if (191 < d && 224 > d) var e = a.charCodeAt(c + 1),
+					b = b + String.fromCharCode((d & 31) << 6 | e & 63), c = c + 2;
+					else var e = a.charCodeAt(c + 1),
+					f = a.charCodeAt(c + 2), b = b + String.fromCharCode((d & 15) << 12 | (e & 63) << 6 | f & 63), c = c + 3
+				}
+				return b
+			}
+		}
+		console.debug(zycript.decode("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"));
+
+</script>
 	</head>
 	<body>
 		<div id="header"></div>
