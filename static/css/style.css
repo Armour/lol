@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/*index*/
 body {
 	margin: 0;
 	background-color: #000;
@@ -118,6 +119,16 @@ body {
 	background-size: 100% auto;
 }
 
+.play-button {
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+	background-image: url("../img/play.png");
+}
+
 .votes {
 	color: #fff;
 	font-size: 12px;
@@ -186,6 +197,11 @@ button:disabled {
 	margin: 26px 0 0 0;
 }
 
+
+audio {
+	/*display: none;*/
+}
+
 #footer {
 	width: 120px;
 	position: relative;
@@ -198,6 +214,8 @@ button:disabled {
 	vertical-align: center;
 }
 
+
+/*voting result page*/
 .vote-result {
 	height: 30px;
 	width: 600px;
