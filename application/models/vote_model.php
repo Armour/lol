@@ -13,7 +13,7 @@
 				'skin_name'=>$this->input->post('skin_name',TRUE),
 				'skin_designer'=>$this->input->post('skin_designer',TRUE),
 				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
-				'skin_file_location'=>"/static/$this->input->post('skin_name',TRUE).jpg"
+				'skin_file_location'=>"/static/skin_cover/$this->input->post('skin_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_skin',$data);
 		}
@@ -25,7 +25,7 @@
 					'voice_name'=>$this->input->post('voice_name',TRUE),
 					'voice_designer'=>$this->input->post('voice_designer',TRUE),
 					'voice_vote_number'=>$this->input->post('voice_vote_number',TRUE),
-					'voice_file_location'=>"/static/$this->input->post('skin_name',TRUE).jpg"
+					'voice_file_location'=>"/static/voice_cover/$this->input->post('skin_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_voice',$data);
 		}
@@ -132,72 +132,162 @@
 			return $row['voice_id'];
 		}
 		
-		function skin_get_first_skin()
-		{		
+		function skin_get_former_skin($rank = 0)
+		{
 			$this->db->select('skin_id,skin_name,skin_designer,skin_vote_number,skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
 			$query = $this->db->get();
-			if ($query->num_rows() > 0)
+			if ( $rank != 0)
 			{
-				$row = $query->row_array(0);
-				return $row;
+				switch ($query->num_rows())
+				{
+					case 1: 
+						$row =$query->row_array(0);
+						$row['skin_rank'] = '是第一名呢！';
+							return $row;
+						break;
+						
+					case 2: 
+						$row[1] = $query->row_array(0);
+						$row[2] = $query->row_array(1);
+						if ($row[1]['skin_vote_number'] == $row[2]['skin_vote_number'])
+						{
+							$row[1]['skin_rank'] = '是第一名呢！';
+							$row[2]['skin_rank'] = '是第一名呢！';
+						}	
+							else 
+						{
+							$row[1]['skin_rank'] = '是第一名呢！';
+							$row[2]['skin_rank'] = '迎头赶上！';
+						}
+							return $row[$rank];
+						break;
+						
+					case 3: 
+						$row[1] = $query->row_array(0);
+						$row[2] = $query->row_array(1);
+						$row[3] = $query->row_array(2);
+						if ($row[1]['skin_vote_number'] == $row[2]['skin_vote_number'])
+						{
+							if ($row[2]['skin_vote_number'] == $row[3]['skin_vote_number'])
+							{
+								$row[1]['skin_rank'] = '是第一名呢！';
+								$row[2]['skin_rank'] = '是第一名呢！';
+								$row[3]['skin_rank'] = '是第一名呢！';
+							}	
+								else 
+							{
+								$row[1]['skin_rank'] = '是第一名呢！';
+								$row[2]['skin_rank'] = '是第一名呢！';
+								$row[3]['skin_rank'] = '迎头赶上！';
+							}
+						}
+						else
+						{
+							if ($row[2]['skin_vote_number'] == $row[3]['skin_vote_number'])
+							{
+								$row[1]['skin_rank'] = '是第一名呢！';
+								$row[2]['skin_rank'] = '迎头赶上！';
+								$row[3]['skin_rank'] = '迎头赶上！';
+							}	
+								else 
+							{
+								$row[1]['skin_rank'] = '是第一名呢！';
+								$row[2]['skin_rank'] = '迎头赶上！';
+								$row[3]['skin_rank'] = '只差一点！';
+							}
+						}
+							return $row[$rank];
+						break;
+						
+					default:
+						$row['skin_name'] = '暂缺';
+						$row['skin_designer'] = '暂缺';
+						$row['skin_vote_number'] = '暂缺';
+						$row['skin_file_location'] = 'default.jpg';
+						$row['skin_rank'] = '暂缺';
+						return $row;
+				}
 			}
 		}
 		
-		function skin_get_second_skin()
-		{		
-			$this->db->select('skin_id,skin_name,skin_designer,skin_vote_number,skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
-			$query = $this->db->get();
-			if ($query->num_rows() > 0)
-			{
-				$row = $query->row_array(1);
-				return $row;
-			}
-		}
-		
-		function skin_get_third_skin()
-		{		
-			$this->db->select('skin_id,skin_name,skin_designer,skin_vote_number,skin_file_location')->from('lol_skin')->order_by('skin_vote_number','desc')->limit(3);
-			$query = $this->db->get();
-			if ($query->num_rows() > 0)
-			{
-				$row = $query->row_array(2);
-				return $row;
-			}
-		}
-		
-		function voice_get_first_voice()
+		function voice_get_former_voice($rank = 0)
 		{
 			$this->db->select('voice_id,voice_name,voice_designer,voice_vote_number,voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
 			$query = $this->db->get();
-			if ($query->num_rows() > 0)
+			if ( $rank != 0)
 			{
-				$row = $query->row_array(0);
-				return $row;
+				switch ($query->num_rows())
+				{
+					case 1:
+						$row =$query->row_array(0);
+						$row['voice_rank'] = '是第一名呢！';
+						return $row;
+						break;
+		
+					case 2:
+						$row[1] = $query->row_array(0);
+						$row[2] = $query->row_array(1);
+						if ($row[1]['voice_vote_number'] == $row[2]['voice_vote_number'])
+						{
+							$row[1]['voice_rank'] = '是第一名呢！';
+							$row[2]['voice_rank'] = '是第一名呢！';
+						}
+						else
+						{
+							$row[1]['voice_rank'] = '是第一名呢！';
+							$row[2]['voice_rank'] = '迎头赶上！';
+						}
+						return $row[$rank];
+						break;
+		
+					case 3:
+						$row[1] = $query->row_array(0);
+						$row[2] = $query->row_array(1);
+						$row[3] = $query->row_array(2);
+						if ($row[1]['voice_vote_number'] == $row[2]['voice_vote_number'])
+						{
+							if ($row[2]['voice_vote_number'] == $row[3]['voice_vote_number'])
+							{
+								$row[1]['voice_rank'] = '是第一名呢！';
+								$row[2]['voice_rank'] = '是第一名呢！';
+								$row[3]['voice_rank'] = '是第一名呢！';
+							}
+							else
+							{
+								$row[1]['voice_rank'] = '是第一名呢！';
+								$row[2]['voice_rank'] = '是第一名呢！';
+								$row[3]['voice_rank'] = '迎头赶上！';
+							}
+						}
+						else
+						{
+							if ($row[2]['voice_vote_number'] == $row[3]['voice_vote_number'])
+							{
+								$row[1]['voice_rank'] = '是第一名呢！';
+								$row[2]['voice_rank'] = '迎头赶上！';
+								$row[3]['voice_rank'] = '迎头赶上！';
+							}
+							else
+							{
+								$row[1]['voice_rank'] = '是第一名呢！';
+								$row[2]['voice_rank'] = '迎头赶上！';
+								$row[3]['voice_rank'] = '只差一点！';
+							}
+						}
+						return $row[$rank];
+						break;
+		
+					default:
+						$row['voice_name'] = '暂缺';
+						$row['voice_designer'] = '暂缺';
+						$row['voice_vote_number'] = '暂缺';
+						$row['voice_file_location'] = 'default.jpg';
+						$row['voice_rank'] = '暂缺';
+						return $row;
+				}
 			}
 		}
 		
-		function voice_get_second_voice()
-		{
-			$this->db->select('voice_id,voice_name,voice_designer,voice_vote_number,voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
-			$query = $this->db->get();
-			if ($query->num_rows() > 0)
-			{
-				$row = $query->row_array(1);
-				return $row;
-			}
-		}
-		
-		function voice_get_third_voice()
-		{
-			$this->db->select('voice_id,voice_name,voice_designer,voice_vote_number,voice_file_location')->from('lol_voice')->order_by('voice_vote_number','desc')->limit(3);
-			$query = $this->db->get();
-			if ($query->num_rows() > 0)
-			{
-				$row = $query->row_array(2);
-				return $row;
-			}
-		}
-
 		function skin_get_that_skin($num = 0)
 		{
 			if ($num != 0)
