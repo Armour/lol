@@ -19,6 +19,12 @@
 				<div class="voice-box">
 					<img class="voice-cover" src="<?php echo base_url("static/voice_cover") ?>/{voice_file_location}" alt="{voice_name}/{voice_designer}/{voice_vote_number}">
 					<div class="voice-border"></div>
+					<div class="play-button" id="{voice_id}">
+						<audio preload>
+							<source src="<?php echo base_url("static/voice") ?>/{voice_id}.mp3" type="audio/mpeg">
+							<source src="<?php echo base_url("static/voice") ?>/{voice_id}.ogg" type="audio/ogg">
+						</audio>
+					</div>
 					<p class="voice-name">{voice_name}</p>
 					<p class="voice-author">作者：{voice_designer}</p>
 					<p class="voice-votes">当前得票：<span class="votes">{voice_vote_number}</span></p>
@@ -29,3 +35,4 @@
 				</div>
 				{/voice}
 			</div>
+			<script src="<?php echo base_url("static/js/index.js.php") ?>?baseurl='<?php echo base_url(); ?>'"></script>
