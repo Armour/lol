@@ -63,7 +63,7 @@
 			 );
 			$num = $this->vote_model->skin_get_number();
 			for ($i=0; $i<$num; $i++)
-		    	$this->data['skin'][$i] = $this->vote_model->skin_get_that_skin($i+1);
+		    	$this->data['skin'][$i] = $this->vote_model->skin_get_this_one_in_all($i+1);
 			//var_dump($this->data);
 			$this->parser->parse('templates/header', $this->title);
 			$this->parser->parse('lol/skin',$this->data);
@@ -77,7 +77,7 @@
 			);
 			$num = $this->vote_model->voice_get_number();
 			for ($i=0; $i<$num; $i++)
-				$this->data['voice'][$i] = $this->vote_model->voice_get_that_voice($i+1);
+				$this->data['voice'][$i] = $this->vote_model->voice_get_this_one_in_all($i+1);
 			$this->parser->parse('templates/header', $this->title);
 			$this->parser->parse('lol/voice',$this->data);
 			$this->load->view('templates/footer');

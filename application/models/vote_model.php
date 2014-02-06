@@ -13,7 +13,7 @@
 				'skin_name'=>$this->input->post('skin_name',TRUE),
 				'skin_designer'=>$this->input->post('skin_designer',TRUE),
 				'skin_vote_number'=>$this->input->post('skin_vote_number',TRUE),
-				'skin_file_location'=>"/static/skin_cover/$this->input->post('skin_name',TRUE).jpg"
+				'skin_file_location'=>"/static/skin_cover/$this->input->post('save_skin_cover_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_skin',$data);
 		}
@@ -25,7 +25,7 @@
 					'voice_name'=>$this->input->post('voice_name',TRUE),
 					'voice_designer'=>$this->input->post('voice_designer',TRUE),
 					'voice_vote_number'=>$this->input->post('voice_vote_number',TRUE),
-					'voice_file_location'=>"/static/voice_cover/$this->input->post('skin_name',TRUE).jpg"
+					'voice_file_location'=>"/static/voice_cover/$this->input->post('save_voive_cover_name',TRUE).jpg"
 			);
 			$this->db->insert('lol_voice',$data);
 		}
@@ -84,7 +84,7 @@
 			return $query->num_rows();
 		}
 		
-		function skin_show_this_one($id = 0)
+		function skin_get_this_one_in_all($id = 0)
 		{
 			if (!is_numeric($id)) $id = 0;
 			if (id!=0) {
@@ -93,14 +93,18 @@
 				if ($query->num_row()>0)
 				{
 					$data = $query->row_array();
-					return $data;
 				}	else
 				{
+					$data['skin_name'] = '暂缺';
+					$data['skin_designer'] = '暂缺';
+					$data['skin_vote_number'] = '暂缺';
+					$data['skin_file_location'] = 'default.jpg';
 				}
+				return $data;
 			}
 		}
 		
-		function voice_show_this_one($id = 0)
+		function voice_get_this_one_in_all($id = 0)
 		{
 			if (!is_numeric($id)) $id = 0;
 			if (id!=0) {
@@ -109,10 +113,14 @@
 				if ($query->num_row()>0)
 				{
 					$data = $query->row_array();
-					return $data;
 				}	else
-				{
+				{	
+					$data['voice_name'] = '暂缺';
+					$data['voice_designer'] = '暂缺';
+					$data['voice_vote_number'] = '暂缺';
+					$data['voice_file_location'] = 'default.jpg';
 				}
+				return $data;
 			}
 		}
 		
@@ -287,25 +295,5 @@
 				}
 			}
 		}
-		
-		function skin_get_that_skin($num = 0)
-		{
-			if ($num != 0)
-			{
-				$query = $this->db->get('lol_skin');	
-				$row = $query->row_array($num);
-				return  $row;	
-			}
 		}
-		
-		function voice_get_that_voice($num = 0)
-		{
-			if ($num != 0)
-			{
-				$query = $this->db->get('lol_voice');
-				$row = $query->row_array($num);
-				return  $row;
-			}
-		}
-	}
 ?>
