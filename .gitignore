@@ -9,3 +9,6 @@ app/logs/*
 !app/logs/.htaccess
 
 application/config/database.php
+
+static/skin_cover/*
+static/voice_cover/*
