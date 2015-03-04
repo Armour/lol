@@ -9,5 +9,3 @@ app/logs/*
 !app/logs/.htaccess
 
 application/config/database.php
-
-static/voice/*
